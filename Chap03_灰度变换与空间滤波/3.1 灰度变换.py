@@ -6,7 +6,6 @@ Encoding： UTF-8
 Software: PyCharm
 """
 import math
-
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
@@ -21,6 +20,7 @@ width = Image.shape[1]
 # 3.1.1 变成黑白图片
 Image_Gray = cv2.cvtColor(Image, cv2.COLOR_BGR2GRAY)
 # cv2.imshow('Image_Gray', Image_Gray)
+cv2.imwrite('../images/3.1.1.jpg', Image_Gray)
 
 # 3.1.2 图像反转 Image Negatives
 # 创建一幅空白图像
@@ -30,6 +30,7 @@ for i in range(height):
         gray = 255 - Image_Gray[i, j]
         Image_Negatives[i, j] = np.uint8(gray)
 # cv2.imshow('Image_Negatives', Image_Negatives)
+cv2.imwrite('../images/3.1.2.jpg', Image_Negatives)
 
 # 3.1.3 对数变换 Log Transformations
 Image_Log = np.zeros((height, width), np.uint8)
@@ -39,22 +40,24 @@ for i in range(height):
         gray = c3 * math.log(1 + Image_Gray[i, j])
         Image_Log[i, j] = np.uint8(gray)
 # cv2.imshow('Image_Log', Image_Log)
+cv2.imwrite('../images/3.1.3.jpg', Image_Log)
 
 # 3.1.4 幂次变换(伽马校正) Gamma Transformations ,有利于增加图像对比度
 Image_Gamma = np.zeros((height, width), np.uint8)
 c4 = 1
-gamma = 0.5
+gamma = 0.8
 for i in range(height):
     for j in range(width):
         gray = c4 * (Image_Gray[i, j] ** gamma)
         Image_Gamma[i, j] = np.uint8(gray)
-# cv2.imshow('Image_Gamma', Image_Gamma)
+cv2.imshow('Image_Gamma', Image_Gamma)
+cv2.imwrite('../images/3.1.4.jpg', Image_Gamma)
 
-# 3.1.4 分段线性变换 Piecewise Linear Transformation Functions
-# 3.1.4.1 对比度拉伸 Contrast Stretching
+# 3.1.5 分段线性变换 Piecewise Linear Transformation Functions
+# 3.1.5.1 对比度拉伸 Contrast Stretching
 Image_Contrast_Stretching = np.zeros((height, width), np.uint8)
-r1, r2 = 80, 200
-s1, s2 = 70, 180
+r1, r2 = 94, 226
+s1, s2 = 26, 154
 
 for i in range(height):
     for j in range(width):
@@ -66,11 +69,12 @@ for i in range(height):
             gray = ((255 - s2) / (255 - r2)) * Image_Gray[i, j] + s2
         Image_Contrast_Stretching[i, j] = np.uint8(gray)
 # cv2.imshow('Image_Contrast_Stretching', Image_Contrast_Stretching)
+cv2.imwrite('../images/3.1.5.1.jpg', Image_Contrast_Stretching)
 
-# 3.1.4.2 灰度级分层 Intensity-Level Slicing
+# 3.1.5.2 灰度级分层 Intensity-Level Slicing
 Image_Intensity_Level_Slicing = np.zeros((height, width), np.uint8)
-r1, r2 = 100, 180
-s1, s2 = 0, 140
+r1, r2 = 94, 226
+s1, s2 = 26, 154
 
 for i in range(height):
     for j in range(width):
@@ -82,7 +86,7 @@ for i in range(height):
             gray = s1
         Image_Intensity_Level_Slicing[i, j] = np.uint8(gray)
 # cv2.imshow('Image_Intensity_Level_Slicing', Image_Intensity_Level_Slicing)
-
+cv2.imwrite('../images/3.1.5.2.jpg', Image_Intensity_Level_Slicing)
 
 # plt模块显示图片
 plt.rcParams['font.sans-serif'] = 'KaiTi_GB2312'
@@ -109,6 +113,6 @@ plt.subplot(247), plt.axis('off'), plt.title("7.灰度级分层", size=14), plt.
 
 plt.show()
 
-# # 图片展示延时
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+# 图片展示延时
+cv2.waitKey(0)
+cv2.destroyAllWindows()
