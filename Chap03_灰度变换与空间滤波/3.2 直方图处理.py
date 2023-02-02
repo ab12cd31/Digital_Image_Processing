@@ -52,6 +52,7 @@ plt.plot(histr, color='r')
 # plt.yticks([])
 
 plt.show()
+
 # 图片展示延时
 cv2.waitKey(0)
 cv2.destroyAllWindows()

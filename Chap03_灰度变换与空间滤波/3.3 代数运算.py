@@ -15,6 +15,7 @@ Image1 = cv2.imread('../images/3.1.5.2.jpg')
 Image2 = cv2.imread('../images/3.1.3.jpg')
 Image_plus = cv2.add(Image1, Image2)
 cv2.imshow('Image_plus', Image_plus)
+cv2.imwrite('../images/3.3.1.jpg', Image_plus)
 
 # 3.3.2 减法运算
 Image1 = cv2.imread('101.png')
@@ -25,6 +26,9 @@ Image_minus1 = cv2.subtract(Image1, Image2)
 Image_minus2 = Image1 - Image2
 cv2.imshow('Image_minus1', Image_minus1)
 cv2.imshow('Image_minus2', Image_minus2)
+cv2.imwrite('../images/3.3.2.1.jpg', Image_minus1)
+cv2.imwrite('../images/3.3.2.2.jpg', Image_minus2)
+
 
 # 3.3.3 乘法运算
 Image1 = cv2.imread('../DataSet/xueguanliu/train_img/1.png')
@@ -33,6 +37,7 @@ Image1 = cv2.resize(Image1, (512, 512))
 Image2 = cv2.resize(Image2, (512, 512))
 Image_multiply = Image1*Image2
 cv2.imshow('Image_multiply', Image_multiply)
+cv2.imwrite('../images/3.3.3.jpg', Image_multiply)
 
 # 图片展示延时
 cv2.waitKey(0)
