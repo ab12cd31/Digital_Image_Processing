@@ -40,6 +40,7 @@ plt.plot(histr, color='r')
 # plt.show()
 
 # 3.2.4 直方图均衡
+plt.title("Image_EqualizeHist")
 Image_EqualizeHist = cv2.equalizeHist(Image)
 cv2.imshow('Image_EqualizeHist',Image_EqualizeHist)
 plt.subplot(212)
@@ -51,6 +52,8 @@ histr = cv2.calcHist([Image_EqualizeHist], [0], None, [256], [0, 255])
 plt.plot(histr, color='r')
 # plt.yticks([])
 
+
+plt.savefig("../images/3.2.png", dpi=300)
 plt.show()
 
 # 图片展示延时

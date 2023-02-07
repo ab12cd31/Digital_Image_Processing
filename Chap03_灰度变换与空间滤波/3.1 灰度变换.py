@@ -111,6 +111,7 @@ plt.subplot(246), plt.axis('off'), plt.title("6.对比度拉伸", size=14), plt.
 plt.subplot(247), plt.axis('off'), plt.title("7.灰度级分层", size=14), plt.imshow(
     Image_Intensity_Level_Slicing, cmap='gray')
 
+plt.savefig("../images/3.1.png", dpi=300)
 plt.show()
 
 # 图片展示延时
